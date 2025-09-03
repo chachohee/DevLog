@@ -1,11 +1,43 @@
-HELP.md
-.gradle
-build/
-!gradle/wrapper/gradle-wrapper.jar
-!**/src/main/**/build/
-!**/src/test/**/build/
+# =========================
+# Java (build artifacts)
+# =========================
+*.class
+*.log
+*.ctxt
+hs_err_pid*
+replay_pid*
 
-### STS ###
+# 빌드 결과물 (커밋 금지)
+*.jar
+*.war
+*.ear
+*.zip
+*.tar.gz
+*.rar
+
+# =========================
+# Gradle
+# =========================
+.gradle/
+build/
+
+# Gradle Wrapper는 반드시 커밋 (팀원이 동일 버전 빌드 가능)
+!gradle/wrapper/gradle-wrapper.jar
+!gradlew
+!gradlew.bat
+
+# =========================
+# IntelliJ IDEA
+# =========================
+.idea/
+*.iws
+*.iml
+*.ipr
+out/
+
+# =========================
+# STS / Eclipse (혹시 다른 IDE로 열 경우)
+# =========================
 .apt_generated
 .classpath
 .factorypath
@@ -14,24 +46,47 @@ build/
 .springBeans
 .sts4-cache
 bin/
-!**/src/main/**/bin/
-!**/src/test/**/bin/
 
-### IntelliJ IDEA ###
-.idea
-*.iws
-*.iml
-*.ipr
-out/
-!**/src/main/**/out/
-!**/src/test/**/out/
-
-### NetBeans ###
+# =========================
+# NetBeans
+# =========================
 /nbproject/private/
 /nbbuild/
 /dist/
 /nbdist/
 /.nb-gradle/
 
-### VS Code ###
+# =========================
+# VS Code
+# =========================
 .vscode/
+
+# =========================
+# OS / Tooling
+# =========================
+.DS_Store
+Thumbs.db
+
+# =========================
+# Logs & Temp
+# =========================
+logs/
+*.out
+*.tmp
+*.swp
+*.swo
+
+# =========================
+# 환경 변수 / 시크릿
+# =========================
+*.env
+*.env.*
+!.env.example   # 예시 파일은 허용
+
+# 로컬 전용 프로필 (개발자 개인 설정용)
+src/main/resources/application-local.yml
+src/main/resources/application-local.properties
+
+# (선택) 프로덕션 환경파일 보호 → 깜빡하고 올리지 않게끔 주석 처리
+# src/main/resources/application-prod.yml
+# src/main/resources/application-prod.properties
