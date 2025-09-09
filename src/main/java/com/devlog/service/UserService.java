@@ -31,7 +31,7 @@ public class UserService {
                 .email(request.getEmail())
                 .password(encodedPassword)
                 .nickname(request.getNickname())
-                .role(String.valueOf(Role.USER)) // 기본 역할 설정
+                .role(Role.USER) // 기본 역할 설정
                 .build();
 
         return userRepository.save(newUser);
