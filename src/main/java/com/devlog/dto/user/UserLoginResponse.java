@@ -7,7 +7,6 @@ import lombok.NoArgsConstructor;
 @Getter
 @NoArgsConstructor
 @AllArgsConstructor
-public class UserLoginRequest {    // 로그인 요청
-    private String username;
-    private String password;
+public class UserLoginResponse {    // 로그인 응답 (JWT)
+    private String token;
 }
