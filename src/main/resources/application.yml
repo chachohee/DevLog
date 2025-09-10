@@ -3,3 +3,12 @@ spring:
     name: devlog
   profiles:
     active: dev
+  logging:
+    level:
+      org.springframework.core.env: DEBUG
+  data:
+    redis:
+      host: localhost
+      port: 6379
+#  config:
+#    import: optional:dotenv:.env
