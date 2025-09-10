@@ -3,3 +3,8 @@ spring:
     name: devlog
   profiles:
     active: dev
+  logging:
+    level:
+      org.springframework.core.env: DEBUG
+#  config:
+#    import: optional:dotenv:.env

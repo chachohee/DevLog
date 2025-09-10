@@ -1,7 +1,7 @@
 spring:
   # DB 설정
   datasource:
-    url: jdbc:mysql://localhost:3306/devlog?serverTimezone=UTC&characterEncoding=UTF-8
+    url: jdbc:mysql://127.0.0.1:3306/devlog?serverTimezone=UTC&characterEncoding=UTF-8
     username: dev_user
     password: devpass123!
     driver-class-name: com.mysql.cj.jdbc.Driver
@@ -9,7 +9,7 @@ spring:
   # JPA (Java Persistence API) 설정
   jpa:
     hibernate:
-      ddl-auto: update   # 개발 중에는 update, 추후엔 validate 권장
+      ddl-auto: create   # 개발 중에는 update, 추후엔 validate 권장
     show-sql: true
     properties:
       hibernate:
