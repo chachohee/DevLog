@@ -5,6 +5,7 @@ import com.devlog.dto.user.UserLoginResponse;
 import com.devlog.dto.user.UserRegisterRequest;
 import com.devlog.dto.user.UserResponse;
 import com.devlog.security.JwtUtil;
+import com.devlog.service.LogoutService;
 import com.devlog.service.UserService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
@@ -19,6 +20,7 @@ import org.springframework.web.bind.annotation.*;
 public class UserController {
 
     private final UserService userService;
+    private final LogoutService logoutService;
     private final AuthenticationManager authenticationManager;
     private final JwtUtil jwtUtil;
 
@@ -49,5 +51,17 @@ public class UserController {
 
         String token = jwtUtil.generateToken(authentication.getName());
         return ResponseEntity.ok(new UserLoginResponse(token));
+    }
+
+    @PostMapping("/logout")
+    public ResponseEntity<String> logout(@RequestHeader("Authorization") String authorizationHeader
+    ) {
+        if (authorizationHeader == null || !authorizationHeader.startsWith("Bearer ")) {
+            String token = authorizationHeader.substring(7);
+            long expirationMillis = jwtUtil.getExpiration(token);
+            // 토큰을 블랙리스트에 추가
+             logoutService.logout(token, expirationMillis);
+        }
+        return ResponseEntity.ok("Logged out successfully.");
     }
 }

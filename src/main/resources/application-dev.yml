@@ -1,9 +1,9 @@
 spring:
   # DB 설정
   datasource:
-    url: jdbc:mysql://127.0.0.1:3306/devlog?serverTimezone=UTC&characterEncoding=UTF-8
-    username: dev_user
-    password: devpass123!
+    url: jdbc:mysql://localhost:3306/devlog?serverTimezone=UTC&characterEncoding=UTF-8
+    username: cch
+    password: 1234
     driver-class-name: com.mysql.cj.jdbc.Driver
 
   # JPA (Java Persistence API) 설정

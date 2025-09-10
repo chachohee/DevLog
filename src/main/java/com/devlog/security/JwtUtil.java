@@ -65,4 +65,10 @@ public class JwtUtil {  // JWT 생성, 파싱, 검증 담당
                 .getBody();
     }
 
+    // 토큰 만료 시간 반환 (밀리초 단위)
+    public long getExpiration(String token) {
+        Date expiration = parseClaims(token).getExpiration();
+        return expiration.getTime() - System.currentTimeMillis();
+    }
+
 }

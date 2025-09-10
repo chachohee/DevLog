@@ -11,6 +11,7 @@ import org.springframework.stereotype.Service;
 @Service
 @RequiredArgsConstructor
 public class UserService {
+    // 유저 정보 관리 - 회원가입, 프로필 조회, 비밀번호 변경 등
 
     private final UserRepository userRepository;
     private final PasswordEncoder passwordEncoder;
