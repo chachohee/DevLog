@@ -23,7 +23,7 @@ public class JwtFilter extends OncePerRequestFilter {   // JWT 인증 필터, Se
 
     private final JwtUtil jwtUtil;
     private final UserDetailsService userDetailsService;
-    private final LogoutService logoutService;
+//    private final LogoutService logoutService;
 
     @Override
     protected void doFilterInternal(HttpServletRequest request,
@@ -41,11 +41,11 @@ public class JwtFilter extends OncePerRequestFilter {   // JWT 인증 필터, Se
 
             try {
                 // 2. 로그아웃된 토큰인지 확인
-                 if (logoutService.isLoggedOut(token)) {
-                     log.warn("Token is blacklisted (already logged out): {}", token);
-                     response.setStatus(HttpServletResponse.SC_UNAUTHORIZED); // 401 Unauthorized
-                     return; // 요청 차단
-                 }
+//                 if (logoutService.isLoggedOut(token)) {
+//                     log.warn("Token is blacklisted (already logged out): {}", token);
+//                     response.setStatus(HttpServletResponse.SC_UNAUTHORIZED); // 401 Unauthorized
+//                     return; // 요청 차단
+//                 }
                 // 3. 토큰에서 사용자 이름 추출
                 username = jwtUtil.extractUsername(token);
                 // 4. 토큰이 유효한지 검증 (SecurityContext에 인증 정보 설정)
