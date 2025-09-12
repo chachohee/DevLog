@@ -1,11 +1,13 @@
 package com.devlog.service;
 
 import lombok.RequiredArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.stereotype.Service;
 
 import java.util.concurrent.TimeUnit;
 
+@Slf4j
 @Service
 @RequiredArgsConstructor
 public class LogoutService {
@@ -25,6 +27,11 @@ public class LogoutService {
     
     // 블랙리스트에 등록된 토큰인지 확인
     public boolean isLoggedOut(String token) {
-        return Boolean.TRUE.equals(redisTemplate.hasKey(token));
+        try {
+            return Boolean.TRUE.equals(redisTemplate.hasKey(token));
+        } catch (Exception e) {
+            log.error("Redis 접속 실패, 로그아웃 체크 실패: {}", e.getMessage());
+            return false; // 실패 시 차단하지 않고 토큰 허용
+        }
     }
 }

@@ -71,4 +71,11 @@ public class JwtUtil {  // JWT 생성, 파싱, 검증 담당
         return expiration.getTime() - System.currentTimeMillis();
     }
 
+    public String getUsernameFromHeader(String authHeader) {
+        if (authHeader != null && authHeader.startsWith("Bearer ")) {
+            String token = authHeader.substring(7);
+            return extractUsername(token);
+        }
+        throw new IllegalArgumentException("Invalid Authorization header.");
+    }
 }

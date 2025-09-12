@@ -50,7 +50,8 @@ public class UserController {
         );
 
         String token = jwtUtil.generateToken(authentication.getName());
-        return ResponseEntity.ok(new UserLoginResponse(token));
+        String username = request.getUsername();
+        return ResponseEntity.ok(new UserLoginResponse(token, username));
     }
 
     @PostMapping("/logout")

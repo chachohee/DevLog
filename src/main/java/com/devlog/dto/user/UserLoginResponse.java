@@ -9,4 +9,5 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 public class UserLoginResponse {    // 로그인 응답 (JWT)
     private String token;
+    private String username;
 }
